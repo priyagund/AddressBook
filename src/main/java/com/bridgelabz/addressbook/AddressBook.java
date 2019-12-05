@@ -57,7 +57,7 @@ public class AddressBook {
 
     }
 
-    public Object editPersonAddress(int listIndex, String address, String city , String state, String zip) throws Exception {
+    public Object editPersonAddress(int listIndex, String address, String city , String state, String zipCode) throws Exception {
         try {
             if (listIndex == -1) {
                 throw new Exception("person phoneNumber not found");
@@ -66,7 +66,7 @@ public class AddressBook {
                 addressObj.setAddress(address);
                 addressObj.setCity(city);
                 addressObj.setState(state);
-                addressObj.setZip(zip);
+                addressObj.setZip(zipCode);
                 this.personList.get(listIndex).setAddress(addressObj);
                 writeIntoJson(this.personList);
 

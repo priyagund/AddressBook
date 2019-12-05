@@ -1,13 +1,1 @@
-[
-  {
-    "address": {
-      "state": "Maharastra",
-      "address": "sector 2",
-      "city": "Washi",
-      "zip": "5456465"
-    },
-    "phoneNumber": "7066323266",
-    "lastName": "gund",
-    "firstName": "priya"
-  }
-]
+[{"address":{"state":"Maharastra","address":"sector 2","city":"Washi","zip":"5456465"},"phoneNumber":"7066323266","firstName":"priya","lastName":"gund"}]

@@ -54,7 +54,7 @@ public class AddressBookTest
         AddressBook addressBook = new AddressBook();
         addressBook.readPersonData("/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json");
         int listIndex=addressBook.findPerson("67678");
-        Object result = addressBook.editPersonAddress(listIndex,"sector 2","Washi","Maharastra","5456465");
+        Object result = addressBook.editPersonAddress(listIndex,"sector 2","latur","Maharastra","2436453");
         Assert.assertEquals("java.lang.Exception: person phoneNumber not found", result.toString());
     }
 
