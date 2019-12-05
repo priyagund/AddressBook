@@ -7,6 +7,14 @@ public class Person
     private String phoneNumber;
     private Address address;
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -23,13 +31,6 @@ public class Person
         this.lastName = lastName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public Address getAddress() {
         return address;
@@ -38,4 +39,6 @@ public class Person
     public void setAddress(Address address) {
         this.address = address;
     }
+
+
 }
