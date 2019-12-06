@@ -7,7 +7,7 @@
       "city": "Washi"
     },
     "lastName": "bbb",
-    "phoneNumber": "9637313118",
+    "phoneNumber": "9284755415",
     "firstName": "priya"
   },
   {
@@ -18,18 +18,7 @@
       "city": "Mumbai"
     },
     "lastName": "gund",
-    "phoneNumber": "14521488",
-    "firstName": "Priyanka"
-  },
-  {
-    "address": {
-      "state": "maharastra",
-      "address": "sector 3",
-      "zip": "354353",
-      "city": "Washi"
-    },
-    "lastName": "jadhav",
     "phoneNumber": "9284755415",
-    "firstName": "Priti"
+    "firstName": "Priyanka"
   }
 ]

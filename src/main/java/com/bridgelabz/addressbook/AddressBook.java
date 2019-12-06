@@ -8,8 +8,14 @@ import java.util.List;
 public class AddressBook {
     ObjectMapper mapper=new ObjectMapper();
     private List<Person>personList;
-   private String fileName="/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json";
+    private String fileName;
+    public List<Person> getPersonList() {
+        return personList;
+    }
 
+    public String getFileName() {
+        return fileName;
+    }
 
     public Object addPerson( String firstName, String lastName, String phoneNumber, String address, String city, String state, String zip) throws Exception {
         try {
@@ -24,7 +30,7 @@ public class AddressBook {
             personObj.setPhoneNumber(phoneNumber);
             personObj.setAddress(addressObj);
             personList.add(personObj);
-            writeIntoJson(this.personList);
+            writeIntoJson(this.personList, new File(fileName));
             return 1;
         }catch(Exception e){
             return e;
@@ -43,25 +49,24 @@ public class AddressBook {
         }
         return listIndex;
     }
-    public Object editMobileNumber(int listIndex, String newPhoneNumber)  {
-        try{
+
+    public Object editMobileNumber(String phone, String newPhoneNumber) throws AddressBookException, IOException {
+        int listIndex=this.findPerson(phone);
             if(listIndex==-1)
             {
-                throw new Exception("person phoneNumber not found");
+                throw new AddressBookException(AddressBookException.ExceptionType.INVALID_NUMBER,"person phoneNumber not found");
             }
             this.personList.get(listIndex).setPhoneNumber(newPhoneNumber);
-            writeIntoJson(this.personList);
+            writeIntoJson(this.personList, new File(fileName));
             return 1;
-        }catch(Exception e){
-            return e;
         }
 
-    }
 
-    public Object editPersonAddress(int listIndex, String address, String city , String state, String zipCode) throws Exception {
-        try {
+
+    public Object editPersonAddress(String phone, String address, String city , String state, String zipCode) throws AddressBookException, IOException {
+        int listIndex=this.findPerson(phone);
             if (listIndex == -1) {
-                throw new Exception("person phoneNumber not found");
+                throw new AddressBookException(AddressBookException.ExceptionType.INVALID_NUMBER,"person phoneNumber not found");
             }
                 Address addressObj = new Address();
                 addressObj.setAddress(address);
@@ -69,14 +74,10 @@ public class AddressBook {
                 addressObj.setState(state);
                 addressObj.setZip(zipCode);
                 this.personList.get(listIndex).setAddress(addressObj);
-                writeIntoJson(this.personList);
-
+                writeIntoJson(this.personList, new File(fileName));
 
             return 1;
-        }
-        catch (Exception e) {
-            return e;
-        }
+
     }
 
     public List <Person>sortByLastName() throws IOException {
@@ -89,7 +90,7 @@ public class AddressBook {
                 }
             }
         }
-        writeIntoJson(this.personList);
+        writeIntoJson(this.personList, new File(fileName));
         return this.personList;
 
     }
@@ -105,33 +106,32 @@ public class AddressBook {
             }
             }
         }
-        writeIntoJson(this.personList);
+        writeIntoJson(this.personList,new File(this.fileName));
         return this.personList;
     }
 
 
-    public Object deletePersonData(int listIndex,String phoneNumber) throws Exception {
-        try{
+    public Object deletePersonData(int listIndex,String phoneNumber) throws AddressBookException, IOException {
+
             listIndex=this.findPerson(phoneNumber);
         if (listIndex == -1) {
-            throw new Exception("person phoneNumber not found");
+            throw new AddressBookException(AddressBookException.ExceptionType.INVALID_NUMBER,"person phoneNumber not found");
         }
             this.personList.remove(listIndex);
-        writeIntoJson(this.personList);
+        writeIntoJson(this.personList, new File(fileName));
         return 1;
-    }catch(Exception e){
-        return e;
 
-      }
     }
 
 
-    public void writeIntoJson(List<Person>personList) throws IOException {
+    public void writeIntoJson(List<Person>personList,File file) throws IOException {
 
-       mapper.writeValue(new File(this.fileName),personList);
+       mapper.writeValue(file,personList);
    }
 
-   public void readPersonData(String fileName) throws IOException {
+   public void readPersonData(String file) throws IOException
+   {
+       this.fileName=file;
        personList=mapper.readValue(new File(this.fileName),new TypeReference<List<Person>>(){});
    }
 
