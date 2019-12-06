@@ -31,16 +31,5 @@
     "lastName": "jadhav",
     "phoneNumber": "9284755415",
     "firstName": "Priti"
-  },
-  {
-    "address": {
-      "state": "maharastra",
-      "address": "sector 3",
-      "zip": "354353",
-      "city": "Washi"
-    },
-    "lastName": "jadhav",
-    "phoneNumber": "7066323266",
-    "firstName": "Priti"
   }
 ]
