@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.addressbook.AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-06T04:43:11" hostname="admin165-desktop" time="0.123">
+<testsuite name="com.bridgelabz.addressbook.AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-06T05:21:58" hostname="admin165-desktop" time="0.129">
   <properties/>
-  <testcase name="givenPersonList_sortByZipCode_shouldReturnList" classname="com.bridgelabz.addressbook.AddressBookTest" time="0.123"/>
+  <testcase name="givenPersonPhoneNumber_PersonDeletedSuccessfully_shouldReturnOne" classname="com.bridgelabz.addressbook.AddressBookTest" time="0.129"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

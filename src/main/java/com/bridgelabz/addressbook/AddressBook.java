@@ -109,6 +109,21 @@ public class AddressBook {
     }
 
 
+    public Object deletePersonData(int listIndex,String phoneNumber) throws Exception {
+        try{
+            listIndex=this.findPerson(phoneNumber);
+        if (listIndex == -1) {
+            throw new Exception("person phoneNumber not found");
+        }
+            this.personList.remove(listIndex);
+        writeIntoJson(this.personList);
+        return 1;
+    }catch(Exception e){
+        return e;
+
+      }
+    }
+
 
     public void writeIntoJson(List<Person>personList) throws IOException {
 

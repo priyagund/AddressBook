@@ -75,4 +75,23 @@ public class AddressBookTest
         List<Person>personList=addressBook.sortByZipCode();
         Assert.assertEquals("12345",personList.get(0).getAddress().getZip());
     }
+
+    @Test
+    public void givenPersonPhoneNumber_deletePerson_butPersonPhoneDoesNotExit_shouldReturnOne() throws Exception {
+        AddressBook addressBook = new AddressBook();
+        addressBook.readPersonData("/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json");
+        int listIndex=addressBook.findPerson("123456789");
+        Object result = addressBook.deletePersonData(listIndex, "7066323266");
+        Assert.assertEquals("java.lang.Exception: person phoneNumber not found", result.toString());
+    }
+
+    @Test
+    public void givenPersonPhoneNumber_PersonDeletedSuccessfully_shouldReturnOne() throws Exception {
+        AddressBook addressBook = new AddressBook();
+        addressBook.readPersonData("/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json");
+        int listIndex=addressBook.findPerson("7066323266");
+        int result = (Integer) addressBook.deletePersonData(listIndex,"7066323266");
+        Assert.assertEquals(1,result);
+    }
+
 }
