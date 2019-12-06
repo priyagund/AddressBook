@@ -2,6 +2,8 @@ package com.bridgelabz.addressbook;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.util.List;
 
 public class AddressBookTest
 {
@@ -10,7 +12,7 @@ public class AddressBookTest
     public void addPerson_inAddressBook_shouldReturnPerson() throws Exception {
         AddressBook addressBook =  new AddressBook();
         addressBook.readPersonData("/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json");
-        int personData= (int) addressBook.addPerson("priya","gund","7066323266","ShahuColony","pune","maharastra","413510");
+        int personData= (int) addressBook.addPerson("Priti","jadhav","7066323266","sector 3","Washi","maharastra","354353");
         Assert.assertEquals(1,personData);
         }
 
@@ -58,4 +60,19 @@ public class AddressBookTest
         Assert.assertEquals("java.lang.Exception: person phoneNumber not found", result.toString());
     }
 
+  @Test
+    public void givenPersonList_sortByLastName_shouldReturnList() throws IOException {
+      AddressBook addressBook = new AddressBook();
+      addressBook.readPersonData("/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json");
+      List<Person> personList = addressBook.sortByLastName();
+      Assert.assertEquals("bbb",personList.get(0).getLastName());
+  }
+
+    @Test
+    public void givenPersonList_sortByZipCode_shouldReturnList() throws IOException {
+        AddressBook addressBook=new AddressBook();
+        addressBook.readPersonData("/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json");
+        List<Person>personList=addressBook.sortByZipCode();
+        Assert.assertEquals("12345",personList.get(0).getAddress().getZip());
+    }
 }

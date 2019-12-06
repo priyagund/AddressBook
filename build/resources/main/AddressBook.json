@@ -6,8 +6,41 @@
       "city": "Washi",
       "zip": "5456465"
     },
+    "lastName": "bbb",
     "phoneNumber": "7066323266",
-    "lastName": "gund",
     "firstName": "priya"
+  },
+  {
+    "address": {
+      "state": "maharastra",
+      "address": "sector 3",
+      "city": "Washi",
+      "zip": "12345"
+    },
+    "lastName": "ddff",
+    "phoneNumber": "7066323266",
+    "firstName": "Priti"
+  },
+  {
+    "address": {
+      "state": "maharastra",
+      "address": "sector 2",
+      "city": "Mumbai",
+      "zip": "564659"
+    },
+    "lastName": "gund",
+    "phoneNumber": "7066323266",
+    "firstName": "Priyanka"
+  },
+  {
+    "address": {
+      "state": "maharastra",
+      "address": "sector 3",
+      "city": "Washi",
+      "zip": "354353"
+    },
+    "lastName": "jadhav",
+    "phoneNumber": "7066323266",
+    "firstName": "Priti"
   }
 ]

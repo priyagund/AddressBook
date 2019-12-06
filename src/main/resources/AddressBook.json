@@ -1,1 +1,46 @@
-[{"address":{"state":"Maharastra","address":"sector 2","city":"Washi","zip":"5456465"},"phoneNumber":"7066323266","firstName":"priya","lastName":"gund"}]
+[
+  {
+    "address": {
+      "state": "maharastra",
+      "address": "sector 3",
+      "zip": "12345",
+      "city": "Washi"
+    },
+    "lastName": "ddff",
+    "phoneNumber": "7066323266",
+    "firstName": "Priti"
+  },
+  {
+    "address": {
+      "state": "maharastra",
+      "address": "sector 3",
+      "zip": "354353",
+      "city": "Washi"
+    },
+    "lastName": "jadhav",
+    "phoneNumber": "7066323266",
+    "firstName": "Priti"
+  },
+  {
+    "address": {
+      "state": "Maharastra",
+      "address": "sector 2",
+      "zip": "5456465",
+      "city": "Washi"
+    },
+    "lastName": "bbb",
+    "phoneNumber": "7066323266",
+    "firstName": "priya"
+  },
+  {
+    "address": {
+      "state": "maharastra",
+      "address": "sector 2",
+      "zip": "564659",
+      "city": "Mumbai"
+    },
+    "lastName": "gund",
+    "phoneNumber": "7066323266",
+    "firstName": "Priyanka"
+  }
+]

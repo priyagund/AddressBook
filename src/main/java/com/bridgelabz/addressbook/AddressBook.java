@@ -77,6 +77,39 @@ public class AddressBook {
             return e;
         }
     }
+
+    public List <Person>sortByLastName() throws IOException {
+        for(int i=0;i<this.personList.size()-1;i++){
+            for(int j=0;j<this.personList.size()-i-1;j++){
+                if(this.personList.get(j).getLastName().compareTo(this.personList.get(j+1).getLastName())>0){
+                    Person temp=this.personList.get(j);
+                    this.personList.set(j,this.personList.get(j+1));
+                    this.personList.set(j+1,temp);
+                }
+            }
+        }
+        writeIntoJson(this.personList);
+        return this.personList;
+
+    }
+
+    public List <Person>sortByZipCode() throws IOException {
+        for(int i=0;i<this.personList.size()-1;i++){
+            for(int j=0;j<this.personList.size()-i-1;j++)
+            {
+              if(this.personList.get(j).getAddress().getZip().compareTo(this.personList.get(j+1).getAddress().getZip())>0) {
+                    Person temp=this.personList.get(j);
+                    this.personList.set(j,this.personList.get(j+1));
+                    this.personList.set(j+1,temp);
+            }
+            }
+        }
+        writeIntoJson(this.personList);
+        return this.personList;
+    }
+
+
+
     public void writeIntoJson(List<Person>personList) throws IOException {
 
        mapper.writeValue(new File(this.fileName),personList);
@@ -85,5 +118,6 @@ public class AddressBook {
    public void readPersonData(String fileName) throws IOException {
        personList=mapper.readValue(new File(this.fileName),new TypeReference<List<Person>>(){});
    }
+
 
 }
