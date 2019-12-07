@@ -30,7 +30,7 @@ public class AddressBookTest {
         try {
             Object result = addressBook.editMobileNumber("67678", "7066323266");
         } catch (AddressBookException e) {
-            Assert.assertEquals(AddressBookException.ExceptionType.INVALID_NUMBER,e.type );
+            Assert.assertEquals(AddressBookException.ExceptionType.INVALID_NUMBER, e.type);
         }
 
     }
@@ -41,7 +41,7 @@ public class AddressBookTest {
         addressBook.readPersonData("/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json");
         int result = 0;
         try {
-            result = (Integer) addressBook.editMobileNumber("7066323266" ,"9284755415");
+            result = (Integer) addressBook.editMobileNumber("7066323266", "9284755415");
         } catch (AddressBookException e) {
             Assert.assertEquals(1, result);
         } catch (IOException e) {
@@ -55,10 +55,10 @@ public class AddressBookTest {
         AddressBook addressBook = new AddressBook();
         addressBook.readPersonData("/home/admin165/Desktop/Priya/AddressBook/src/main/resources/AddressBook.json");
         try {
-          int result = (Integer) addressBook.editPersonAddress("7066323266", "sector 2", "Washi", "Maharastra", "5456465");
+            int result = (Integer) addressBook.editPersonAddress("7066323266", "sector 2", "Washi", "Maharastra", "5456465");
             Assert.assertEquals(1, result);
         } catch (AddressBookException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class AddressBookTest {
         try {
             Object result = addressBook.editPersonAddress("67678", "sector 2", "latur", "Maharastra", "2436453");
         } catch (AddressBookException e) {
-            Assert.assertEquals(AddressBookException.ExceptionType.INVALID_NUMBER,e.type );
+            Assert.assertEquals(AddressBookException.ExceptionType.INVALID_NUMBER, e.type);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -123,13 +123,13 @@ public class AddressBookTest {
     }
 
     @Test
-    public void createNewAddressBook_shouldreturnFile(){
+    public void createNewAddressBook_shouldreturnFile() {
         AddressBookManagement addressBookManagement = new AddressBookManagement();
         String fileName = "UP";
         try {
             int result = (int) addressBookManagement.createAddressBook(fileName);
         } catch (AddressBookException e) {
-            Assert.assertEquals(AddressBookException.ExceptionType.FILE_ALREADY_EXIST,e.type);
+            Assert.assertEquals(AddressBookException.ExceptionType.FILE_ALREADY_EXIST, e.type);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -150,13 +150,12 @@ public class AddressBookTest {
     }
 
     @Test
-    public void openAddressBook_ifAddressBookNotFound_throwException()
-    {
-        AddressBookManagement addressBookManagement=new AddressBookManagement();
+    public void openAddressBook_ifAddressBookNotFound_throwException() {
+        AddressBookManagement addressBookManagement = new AddressBookManagement();
         try {
             addressBookManagement.openAddressBook("ABC");
         } catch (AddressBookException e) {
-            Assert.assertEquals(AddressBookException.ExceptionType.FILE_NOT_FOUND,e.type);
+            Assert.assertEquals(AddressBookException.ExceptionType.FILE_NOT_FOUND, e.type);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -176,16 +175,41 @@ public class AddressBookTest {
     }
 
     @Test
-    public void saveAddressBook_ifAddressBookNotFound_throwException()
-    {
-        AddressBookManagement addressBookManagement=new AddressBookManagement();
+    public void saveAddressBook_ifAddressBookNotFound_throwException() {
+        AddressBookManagement addressBookManagement = new AddressBookManagement();
         try {
             addressBookManagement.openAddressBook("xyz");
         } catch (AddressBookException e) {
-            Assert.assertEquals(AddressBookException.ExceptionType.FILE_NOT_FOUND,e.type);
+            Assert.assertEquals(AddressBookException.ExceptionType.FILE_NOT_FOUND, e.type);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
+
+    @Test
+    public void closeAddressBook_ifClose_returnOne_() throws IOException, AddressBookException {
+        AddressBookManagement addressBookManagement = new AddressBookManagement();
+        Object person = addressBookManagement.openAddressBook("aaa");
+        int result = 0;
+        try {
+            result = (int) addressBookManagement.closeAddressbook(person);
+        } catch (AddressBookException e) {
+            Assert.assertEquals(1, result);
+        }
+
+    }
+
+    @Test
+    public void closeAddressBook_ifAddressBookNotFound_throwException() {
+        AddressBookManagement addressBookManagement = new AddressBookManagement();
+        try {
+            addressBookManagement.openAddressBook("aaa");
+        } catch (AddressBookException e) {
+            Assert.assertEquals(AddressBookException.ExceptionType.FILE_NOT_FOUND, e.type);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
