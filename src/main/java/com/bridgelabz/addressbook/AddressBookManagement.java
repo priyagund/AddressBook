@@ -46,7 +46,7 @@ public class AddressBookManagement {
     }
 
 
-    public Object saveAddressBook(Object person) throws AddressBookException, IOException {
+    public int saveAddressBook(Object person) throws AddressBookException, IOException {
         if (person instanceof AddressBook) {
             ((AddressBook) person).writeIntoJson(((AddressBook) person).getPersonList(), new File(((AddressBook) person).getFileName()));
             return 1;
@@ -56,7 +56,7 @@ public class AddressBookManagement {
     }
 
 
-    public Object closeAddressbook(Object person) throws AddressBookException {
+    public int closeAddressbook(Object person) throws AddressBookException {
 
             if (person instanceof AddressBook) {
                 return 1;
@@ -66,6 +66,19 @@ public class AddressBookManagement {
 
     }
 
+ public int saveAsAddressBook(AddressBook person,String newFile) throws IOException, AddressBookException {
+     if (person instanceof AddressBook) {
+         String fileName = "/home/admin165/Desktop/Priya/AddressBook/src/main/resources/" + newFile + ".json";
+         File file = new File(fileName);
+         if (file.createNewFile()) {
+             person.writeIntoJson(person.getPersonList(),file);
+         }
+         else {
+             throw new AddressBookException(AddressBookException.ExceptionType.FILE_NOT_FOUND,"No addressbook present for closing");
+         }
+     }
+     return 1;
+ }
 
 
 }

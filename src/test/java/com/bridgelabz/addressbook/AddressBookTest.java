@@ -212,4 +212,19 @@ public class AddressBookTest {
         }
     }
 
+    @Test
+    public void saveAsAddressBook_ifRename_shouldReturnOne() throws IOException, AddressBookException {
+        AddressBookManagement addressBookManagement=new AddressBookManagement();
+        addressBookManagement.openAddressBook("newMH");
+        try {
+            int  result = addressBookManagement.saveAddressBook("newMH");
+            Assert.assertEquals(1,result);
+        } catch (AddressBookException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
